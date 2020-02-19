@@ -1,0 +1,68 @@
+﻿@model IEnumerable<UserDto>
+@{
+    ViewBag.Title = "User";
+    Layout = "_AdminLayout";
+}
+
+<div class="content-header">
+    <div class="container-fluid">
+        <div class="row mb-2 container-fluid">
+            <a asp-action="Save" class="btn btn-success"><i class="fas fa-plus"></i></a>
+        </div>
+        
+        <div class="row mb-2">
+            <div class="container-fluid">
+                <table class="table table-bordered table-hover" id="user">
+                    <thead>
+                    <tr>
+                        <th>Id</th>
+                        <th>User name</th>                                              
+                        <th>Full Name</th>
+                        <th>Avatar</th>
+                        <th>Phone</th>
+                        <th>Address</th>
+                        <th>Role</th>
+                        <th>Request</th>
+                        <th>Action</th>
+                    </tr>
+                    </thead>
+                    <tbody>
+                    @foreach (var item in Model)
+                    {
+                        <tr>
+                            <td>@item.Id</td>
+                            <td>@item.Username</td>                                                     
+                            <td>@item.LastName @item.FirstName</td>
+                            <td><img src="~/images/@item.Avatar" width="100px" height="100px"/></td>
+                            <td>@item.Phone</td>
+                            <td>@item.Address</td>
+                            <td>@item.Role.Name</td>
+                            <td>
+                            @if (@item.Type == (int) UserType.Processing)
+                            {
+                                <a class="btn btn-success"  asp-action="ApproveRequest" asp-route-id="@item.Id"><i class="fas fa-check"></i></a>
+                                <a class="btn btn-danger"  asp-action="RejectRequest" asp-route-id="@item.Id"><i class="fas fa-times"></i></a>
+                            }
+                             </td>
+                            <td>
+                                <a asp-action="Save" asp-route-id="@item.Id" class="btn btn-warning"><i class="fas fa-pencil-alt"></i></a>
+                                <a asp-action="Delete" asp-route-id="@item.Id" class="btn btn-danger" onclick="return confirm('Are you sure to delete this record?')"><i class="fas fa-times"></i></a>
+                            </td>
+                        </tr>
+                    }
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+</div>
+
+@section Scripts
+{
+    <script>
+        $(document).ready( function () {
+            $('#user').DataTable();
+
+        } );
+    </script>
+}

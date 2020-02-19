@@ -1,0 +1,56 @@
+﻿@model IEnumerable<CategoryDto>
+
+@{
+    ViewBag.Title = "Category";
+    Layout = "_AdminLayout";
+}
+
+<div class="content-header">
+    <div class="container-fluid">
+        <div class="row mb-2 container-fluid">
+            <a asp-action="Save" class="btn btn-success"><i class="fas fa-plus"></i></a>
+        </div>
+        
+        <div class="row mb-2">
+            <div class="container-fluid">
+                <table class="table table-bordered table-hover" id="cate">
+                    <thead>
+                    <tr>
+                        <th>Id</th>
+                        <th>Name</th>
+                        <th>Action</th>
+                    </tr>
+                    </thead>
+                    <tbody>
+                    @foreach (var item in Model)
+                    {
+                        <tr>
+                            <td>@item.Id</td>
+                            <td>@item.Name</td>
+                            <td>
+                                <a asp-action="Save" asp-route-id="@item.Id" class="btn btn-warning"><i class="fas fa-pencil-alt"></i></a>
+                                <a asp-action="Delete" asp-route-id="@item.Id" class="btn btn-danger" onclick="return confirm('Are you sure to delete this record?')"><i class="fas fa-times"></i></a>
+                            </td>
+                        </tr>
+                    }
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+</div>
+
+@section Scripts
+{
+    <script>
+        $(document).ready( function () {
+            $('#cate').DataTable({                               
+            });
+            
+        } );
+    </script>
+}
+   
+
+
+

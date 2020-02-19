@@ -1,0 +1,18 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+  <PropertyGroup>
+    <TargetFramework>netcoreapp2.2</TargetFramework>
+  </PropertyGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\Temp.Common\Temp.Common.csproj" />
+    <ProjectReference Include="..\Temp.DataAccess\Temp.DataAccess.csproj" />
+  </ItemGroup>
+  <ItemGroup>
+    <PackageReference Include="AutoMapper.Extensions.Microsoft.DependencyInjection" Version="7.0.0" />
+    <PackageReference Include="Serilog.Extensions.Logging" Version="3.0.1" />
+  </ItemGroup>
+  <ItemGroup>
+    <Reference Include="Serilog, Version=2.0.0.0, Culture=neutral, PublicKeyToken=24c2f752a8e58a10">
+      <HintPath>..\..\..\..\.nuget\packages\serilog\2.9.0\lib\netstandard2.0\Serilog.dll</HintPath>
+    </Reference>
+  </ItemGroup>
+</Project>

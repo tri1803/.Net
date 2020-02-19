@@ -1,0 +1,37 @@
+﻿@model CategoryDto
+
+@{
+    ViewBag.Title = "Save";
+    Layout = "_AdminLayout";
+}
+
+<div class="content-header">
+    <div class="container-fluid">
+        <h2>Save</h2>
+        <div class="row mb-2">          
+            <div class="row">
+                <div class="col-md-12">
+                    <form asp-action="Save" method="post">
+                        <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+                        <input type="hidden" asp-for="Id"/>
+                        <div class="form-group">
+                            <label asp-for="Name" class="control-label"></label>
+                            <input asp-for="Name" class="form-control"/>
+                            <span asp-validation-for="Name" class="text-danger"></span>
+                        </div>
+                        <div class="form-row">
+                            <div class="form-group col-md-6">
+                                <input type="submit" value="Save" class="btn btn-primary btn-block"/>
+                            </div>
+                            <div class="form-group col-md-6">
+                                <a asp-action="Index" class="btn btn-secondary btn-block"><i class="fa fa-table"></i> Return</a>
+                            </div>
+                        </div>
+                    </form>
+                </div>                
+            </div>
+        </div>
+    </div>
+</div>
+
+
